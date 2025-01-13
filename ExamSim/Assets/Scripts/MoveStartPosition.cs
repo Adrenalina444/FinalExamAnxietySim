@@ -49,7 +49,7 @@ public class MoveStartPosition : MonoBehaviour
         if (player != null && targetPosition != null)
         {
             player.position = targetPosition.position;
-            player.rotation = targetPosition.rotation; // Optional: Align rotation with the target
+            player.rotation = targetPosition.rotation; //Align rotation with the target
         }
 
         // Destroy the specified GameObject

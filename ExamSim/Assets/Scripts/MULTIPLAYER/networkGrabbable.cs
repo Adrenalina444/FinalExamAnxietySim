@@ -6,15 +6,16 @@ using Unity.VisualScripting;
 
 public class networkgrabbable : NetworkBehaviour
 {
-    private NetworkObject netObject;
+    private NetworkObject netObject; 
 
+    //Method called when an obbject is spawned in the network
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
         netObject = GetComponent<NetworkObject>();
     }
    
-
+    //Request ownership of the object
     public void requestOwnership()
     {
         requestOwnership_ServerRpc(NetworkManager.Singleton.LocalClient.ClientId);

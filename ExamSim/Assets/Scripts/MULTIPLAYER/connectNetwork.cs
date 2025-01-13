@@ -15,6 +15,7 @@ using UnityEditor;
 
 public class connectNetwork : MonoBehaviour
 {
+    //Storing allocation and region info
     Guid hostAllocationId;
     Guid playerAllocationId;
     string allocationRegion = "";
@@ -27,9 +28,9 @@ public class connectNetwork : MonoBehaviour
 
     private UnityTransport transport;
 
-    [SerializeField] private int maxConnections = 4;
+    [SerializeField] private int maxConnections = 4; //max of players allowed in lobby
 
-
+    //initialize unity services and sign in the player
     async void Start()
     {
         transport = GetComponent<UnityTransport>();
@@ -38,7 +39,7 @@ public class connectNetwork : MonoBehaviour
 
     }
 
-
+    //Start a host session by creating a lobby
     public async void startHost()
     {
         Debug.Log("Host - Creating an allocation.");
@@ -59,7 +60,7 @@ public class connectNetwork : MonoBehaviour
         
         try
         {
-
+            //generate a join code for clients to use
             relayCode = await RelayService.Instance.GetJoinCodeAsync(hostAllocationId);
             Debug.Log("Host - Got join code: " + relayCode);
             var dataObject = new DataObject(DataObject.VisibilityOptions.Public, relayCode);
@@ -84,6 +85,7 @@ public class connectNetwork : MonoBehaviour
        
     }
 
+    //Start a client session by joining a lobby
     public async void startClient()
     {
         Debug.Log("Player - Joining host allocation using join code.");

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Diagnostics;
 
-public class imageProcessor : MonoBehaviour
+public class ImageProcessor : MonoBehaviour
 {
     public RawImage panelImage; // UI element to display the page
     public RectTransform panelRect; // For resizing the panel if needed
@@ -21,7 +21,7 @@ public class imageProcessor : MonoBehaviour
         // Convert PDF to image using GhostScript (single page)
         ConvertPDFToImage(pdfPath, tempFolder);
 
-        // Load the converted image (we assume only 1 page)
+        // Load the converted image (single page)
         LoadImageFromFolder(tempFolder);
     }
 
@@ -57,7 +57,7 @@ public class imageProcessor : MonoBehaviour
     {
         UnityEngine.Debug.Log($"Loading image from folder: {folderPath}");
 
-        // Get the single PNG file from the folder (assuming single-page PDF)
+        // Get the single PNG file from the folder
         string[] imageFiles = Directory.GetFiles(folderPath, "*.png");
 
         if (imageFiles.Length == 0)
@@ -66,7 +66,7 @@ public class imageProcessor : MonoBehaviour
             return;
         }
 
-        // Load the first image (only one page is converted)
+        // Load the first image 
         string imagePath = imageFiles[0];
         UnityEngine.Debug.Log($"Loading image: {imagePath}");
 

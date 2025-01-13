@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class openFile : MonoBehaviour
 {
-    public imageProcessor processor; // Reference to the imageProcessor script
+    public ImageProcessor processor; // Reference to the imageProcessor script
 
     // Opens the file browser to select a PDF
     public void OpenFileBrowser()
